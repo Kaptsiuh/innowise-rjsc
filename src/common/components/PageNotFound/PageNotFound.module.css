@@ -1,0 +1,16 @@
+.container {
+  min-height: calc(100vh - 150px);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.title {
+  font-size: 250px;
+}
+
+.subtitle {
+  font-size: 50px;
+  text-transform: uppercase;
+}

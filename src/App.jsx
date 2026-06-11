@@ -1,10 +1,10 @@
 import React from "react";
-import { Posts } from "./features/posts/ui/Posts/Posts";
+import { Routing } from "./common/routing/index.js";
 
-export function App() {
+export const App = () => {
   return (
     <div>
-      <Posts />
+      <Routing />
     </div>
   );
-}
+};

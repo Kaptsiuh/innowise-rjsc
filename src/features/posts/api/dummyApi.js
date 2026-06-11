@@ -1,6 +1,5 @@
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
-
-const BASE_URL = "https://dummyjson.com";
+import { BASE_URL } from "../../../common/constants/index.js";
 
 export const dummyApi = createApi({
   reducerPath: "dummyApi",
@@ -9,7 +8,7 @@ export const dummyApi = createApi({
   }),
   endpoints: (builder) => ({
     getPosts: builder.query({
-      query: (limit = 10) => `posts?limit=${limit}`,
+      query: (limit = 12) => `posts?limit=${limit}`,
     }),
   }),
 });

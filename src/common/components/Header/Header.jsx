@@ -5,6 +5,7 @@ import { selectIsLoggedIn, setIsLoggedInAC } from "../../../app-slice.js";
 import { useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
 import { Path } from "../../routing/index.js";
+import { tokenStorage } from "../../utils/index.js";
 
 export const Header = () => {
   const isLoggedIn = useSelector(selectIsLoggedIn);
@@ -12,8 +13,7 @@ export const Header = () => {
   const dispatch = useDispatch();
 
   const logoutHandler = () => {
-    localStorage.removeItem("accessToken");
-
+    tokenStorage.clear();
     dispatch(setIsLoggedInAC({ isLoggedIn: false }));
   };
 

@@ -4,6 +4,7 @@ import { useLoginMutation } from "../../api/authApi.js";
 import { useForm } from "react-hook-form";
 import { useDispatch } from "react-redux";
 import { setIsLoggedInAC } from "../../../../app-slice.js";
+import { DEFAULT_USER_VALUES } from "../../../../common/constants/index.js";
 
 export const Login = () => {
   const [login, { error: apiError }] = useLoginMutation();
@@ -16,7 +17,7 @@ export const Login = () => {
     reset,
     formState: { errors },
   } = useForm({
-    defaultValues: { username: "", password: "", expiresInMins: 1 },
+    defaultValues: DEFAULT_USER_VALUES,
   });
 
   const onSubmit = async (data) => {
@@ -24,8 +25,6 @@ export const Login = () => {
       const res = await login(data).unwrap();
 
       if (res) {
-        localStorage.setItem("accessToken", res.accessToken);
-
         dispatch(setIsLoggedInAC({ isLoggedIn: true }));
         reset();
       }

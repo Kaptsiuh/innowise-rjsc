@@ -2,15 +2,12 @@ import React from "react";
 import * as s from "./Login.module.css";
 import { useLoginMutation } from "../../api/authApi.js";
 import { useForm } from "react-hook-form";
-import { Path } from "../../../../common/routing/index.js";
-import { useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { setIsLoggedInAC } from "../../../../app-slice.js";
 
 export const Login = () => {
   const [login, { error: apiError }] = useLoginMutation();
 
-  const navigate = useNavigate();
   const dispatch = useDispatch();
 
   const {
@@ -19,7 +16,7 @@ export const Login = () => {
     reset,
     formState: { errors },
   } = useForm({
-    defaultValues: { username: "", password: "" },
+    defaultValues: { username: "", password: "", expiresInMins: 1 },
   });
 
   const onSubmit = async (data) => {
@@ -27,9 +24,10 @@ export const Login = () => {
       const res = await login(data).unwrap();
 
       if (res) {
+        localStorage.setItem("accessToken", res.accessToken);
+
         dispatch(setIsLoggedInAC({ isLoggedIn: true }));
         reset();
-        navigate(Path.Posts);
       }
     } catch (error) {
       console.log(error);

@@ -3,6 +3,7 @@ import { Routing } from "./common/routing/index.js";
 import { useMeQuery } from "./features/auth/api/authApi.js";
 import { useDispatch } from "react-redux";
 import { setIsLoggedInAC } from "./app-slice.js";
+import { Header } from "./common/components/Header/Header.jsx";
 
 export const App = () => {
   const [isInitialized, setIsInitialized] = useState(false);
@@ -27,6 +28,7 @@ export const App = () => {
 
   return (
     <div>
+      <Header />
       <Routing />
     </div>
   );

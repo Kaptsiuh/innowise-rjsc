@@ -2,17 +2,16 @@ import React from "react";
 import * as s from "./Login.module.css";
 import { useLoginMutation } from "../../api/authApi.js";
 import { useForm } from "react-hook-form";
-import {
-  ACCESS_TOKEN,
-  REFRESH_TOKEN,
-} from "../../../../common/constants/index.js";
 import { Path } from "../../../../common/routing/index.js";
 import { useNavigate } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { setIsLoggedInAC } from "../../../../app-slice.js";
 
 export const Login = () => {
   const [login, { error: apiError }] = useLoginMutation();
 
   const navigate = useNavigate();
+  const dispatch = useDispatch();
 
   const {
     register,
@@ -28,8 +27,7 @@ export const Login = () => {
       const res = await login(data).unwrap();
 
       if (res) {
-        localStorage.setItem(ACCESS_TOKEN, res.accessToken);
-        localStorage.setItem(REFRESH_TOKEN, res.refreshToken);
+        dispatch(setIsLoggedInAC({ isLoggedIn: true }));
         reset();
         navigate(Path.Posts);
       }

@@ -1,4 +1,4 @@
-import { ACCESS_TOKEN, REFRESH_TOKEN } from "../constants/index.js";
+import { ACCESS_TOKEN, REFRESH_TOKEN } from "@common/constants/index.js";
 
 export const tokenStorage = {
   access: {

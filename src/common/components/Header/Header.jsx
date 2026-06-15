@@ -1,13 +1,11 @@
 import React from "react";
 import * as s from "./Header.module.css";
-import { useSelector } from "react-redux";
-import { selectIsLoggedIn, setIsLoggedInAC } from "../../../app-slice.js";
-import { useDispatch } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
-import { Path } from "../../routing/index.js";
-import { tokenStorage } from "../../utils/index.js";
-import { ToggleThemeMode } from "../ToggleThemeMode/ToggleThemeMode.jsx";
-import { Button } from "../Button/Button.jsx";
+import { selectIsLoggedIn, setIsLoggedInAC } from "@app/app-slice.js";
+import { Path } from "@common/routing/index.js";
+import { tokenStorage } from "@common/utils/index.js";
+import { ToggleThemeMode, Button } from "../index.js";
 
 export const Header = () => {
   const isLoggedIn = useSelector(selectIsLoggedIn);

@@ -1,6 +1,6 @@
 import React from "react";
-import { Reaction } from "./Reaction/Reaction";
 import * as s from "./Post.module.css";
+import { Reaction } from "../../index.js";
 
 export const Post = ({ post }) => {
   const { title, body, tags, reactions, views } = post;

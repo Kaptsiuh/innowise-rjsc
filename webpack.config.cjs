@@ -60,6 +60,8 @@ module.exports = {
     extensions: [".js", ".jsx"],
     alias: {
       "@features": path.resolve(__dirname, "src/features"),
+      "@common": path.resolve(__dirname, "src/common"),
+      "@app": path.resolve(__dirname, "src/app"),
     },
   },
 };

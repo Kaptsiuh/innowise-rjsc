@@ -1,8 +1,8 @@
 import React from "react";
 import * as s from "./ToggleThemeMode.module.css";
 import { useDispatch, useSelector } from "react-redux";
-import { changeThemeModeAC, selectThemeMode } from "../../../app-slice";
-import { Button } from "../Button/Button";
+import { changeThemeModeAC, selectThemeMode } from "@app/app-slice";
+import { Button } from "../index.js";
 
 export const ToggleThemeMode = () => {
   const dispatch = useDispatch();

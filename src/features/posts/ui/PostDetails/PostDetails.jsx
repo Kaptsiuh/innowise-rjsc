@@ -1,12 +1,11 @@
 import React from "react";
+import * as s from "./PostDetails.module.css";
 import { useParams } from "react-router-dom";
 import {
   useGetPostByIdQuery,
   useGetPostCommentsQuery,
 } from "../../api/dummyApi";
-import * as s from "./PostDetails.module.css";
-import { Post } from "../Posts/Post/Post";
-import { Comments } from "./Comments/Comments";
+import { Post, Comments } from "../index.js";
 
 export const PostDetails = () => {
   const { id } = useParams();
@@ -42,7 +41,7 @@ export const PostDetails = () => {
   return (
     <div className={s.container}>
       <Post post={post} />
-      {comments.map((comment) => {
+      {comments?.map((comment) => {
         return <Comments key={comment.id} comment={comment} />;
       })}
     </div>

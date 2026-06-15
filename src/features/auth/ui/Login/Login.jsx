@@ -1,15 +1,14 @@
 import React from "react";
 import * as s from "./Login.module.css";
-import { useLoginMutation } from "../../api/authApi.js";
 import { useForm } from "react-hook-form";
 import { useDispatch } from "react-redux";
-import { setIsLoggedInAC } from "../../../../app-slice.js";
-import { DEFAULT_USER_VALUES } from "../../../../common/constants/index.js";
-import { Button } from "../../../../common/components/Button/Button.jsx";
-import { Input } from "../../../../common/components/Input/Input.jsx";
+import { useLoginMutation } from "../../api/authApi.js";
+import { setIsLoggedInAC } from "@app/app-slice.js";
+import { DEFAULT_USER_VALUES } from "@common/constants/index.js";
+import { Input, Button } from "@common/components/index.js";
 
 export const Login = () => {
-  const [login, { error: apiError }] = useLoginMutation();
+  const [login, { error: apiError, isLoading }] = useLoginMutation();
 
   const dispatch = useDispatch();
 
@@ -47,6 +46,7 @@ export const Login = () => {
             name={"username"}
             error={errors.username}
             placeholder={"Enter username"}
+            disabled={isLoading}
           />
           <Input
             id={"password"}
@@ -55,6 +55,7 @@ export const Login = () => {
             name={"password"}
             error={errors.password}
             placeholder={"Password"}
+            disabled={isLoading}
           />
 
           {apiError && (
@@ -63,7 +64,7 @@ export const Login = () => {
             </span>
           )}
 
-          <Button type="submit" className={s.button}>
+          <Button type="submit" className={s.button} disabled={isLoading}>
             Login
           </Button>
         </div>

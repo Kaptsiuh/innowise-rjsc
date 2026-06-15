@@ -1,10 +1,7 @@
 import { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
-import {
-  useMeQuery,
-  useRefreshMutation,
-} from "../../features/auth/api/authApi.js";
-import { setIsLoggedInAC } from "../../app-slice.js";
+import { useMeQuery, useRefreshMutation } from "@features/auth/api/authApi.js";
+import { setIsLoggedInAC } from "@app/app-slice.js";
 
 export const useAuth = () => {
   const [isInitialized, setIsInitialized] = useState(false);

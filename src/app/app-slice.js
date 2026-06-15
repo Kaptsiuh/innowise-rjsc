@@ -1,5 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { getInitialTheme } from "./common/utils/theme.js";
+import { getInitialTheme } from "@common/utils/index.js";
 
 export const appSlice = createSlice({
   name: "app",

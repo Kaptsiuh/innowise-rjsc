@@ -9,6 +9,7 @@ export const Input = ({
   error,
   type = "text",
   placeholder,
+  disabled = false,
 }) => {
   const registerProps = register(name, {
     required: `${label} is required`,
@@ -24,6 +25,7 @@ export const Input = ({
         type={type}
         placeholder={placeholder}
         className={s.input}
+        disabled={disabled}
         {...registerProps}
       />
       {error && <span className={s.errorMessage}>{error.message}</span>}

@@ -24,6 +24,11 @@
   border-color: var(--shadow);
 }
 
+.input:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
 .errorMessage {
   color: var(--red);
   font-size: 0.8rem;

@@ -1,12 +1,10 @@
 import React from "react";
 import { Route, Routes } from "react-router-dom";
-import { Posts } from "@features/posts/ui/Posts/Posts.jsx";
-import { Login } from "@features/auth/ui/Login/Login.jsx";
-import { PageNotFound } from "../components/PageNotFound/PageNotFound.jsx";
-import { ProtectedRoute } from "../components/ProtectedRoute/ProtectedRoute.jsx";
 import { useSelector } from "react-redux";
-import { selectIsLoggedIn } from "../../app-slice.js";
-import { PostDetails } from "../../features/posts/ui/PostDetails/PostDetails.jsx";
+import { PageNotFound, ProtectedRoute } from "@common/components/index.js";
+import { selectIsLoggedIn } from "@app/app-slice.js";
+import { PostDetails, Posts } from "@features/posts/ui/index.js";
+import { Login } from "@features/auth/ui/index.js";
 
 export const Path = {
   Posts: "/",

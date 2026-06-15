@@ -1,8 +1,8 @@
 import React from "react";
-import { useGetPostsQuery } from "../../api/dummyApi.js";
-import { Post } from "./Post/Post";
 import * as s from "./Posts.module.css";
 import { Link } from "react-router-dom";
+import { useGetPostsQuery } from "../../api/dummyApi.js";
+import { Post } from "../index.js";
 
 export const Posts = () => {
   const { data, isLoading, error } = useGetPostsQuery();

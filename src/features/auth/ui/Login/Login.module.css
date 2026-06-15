@@ -46,6 +46,11 @@
   transform: scale(1.02);
 }
 
+.button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
 .errorMessage {
   color: var(--red);
   font-size: 0.8rem;

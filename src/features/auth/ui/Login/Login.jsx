@@ -6,6 +6,7 @@ import { useDispatch } from "react-redux";
 import { setIsLoggedInAC } from "../../../../app-slice.js";
 import { DEFAULT_USER_VALUES } from "../../../../common/constants/index.js";
 import { Button } from "../../../../common/components/Button/Button.jsx";
+import { Input } from "../../../../common/components/Input/Input.jsx";
 
 export const Login = () => {
   const [login, { error: apiError }] = useLoginMutation();
@@ -39,41 +40,22 @@ export const Login = () => {
       <form className={s.form} onSubmit={handleSubmit(onSubmit)}>
         <p className={s.title}>Sign in</p>
         <div className={s.field}>
-          <div className={s.inputGroup}>
-            <label htmlFor="username" className={s.label}>
-              Username
-            </label>
-            <input
-              id="username"
-              placeholder="Enter username"
-              type="text"
-              className={s.input}
-              {...register("username", {
-                required: "Username is required",
-              })}
-            />
-            {errors.username && (
-              <span className={s.errorMessage}>{errors.username.message}</span>
-            )}
-          </div>
-
-          <div className={s.inputGroup}>
-            <label htmlFor="password" className={s.label}>
-              Password
-            </label>
-            <input
-              id="password"
-              type="password"
-              placeholder="password"
-              className={s.input}
-              {...register("password", {
-                required: "Password is required",
-              })}
-            />
-            {errors.password && (
-              <span className={s.errorMessage}>{errors.password.message}</span>
-            )}
-          </div>
+          <Input
+            id={"username"}
+            label={"Username"}
+            register={register}
+            name={"username"}
+            error={errors.username}
+            placeholder={"Enter username"}
+          />
+          <Input
+            id={"password"}
+            label={"Password"}
+            register={register}
+            name={"password"}
+            error={errors.password}
+            placeholder={"Password"}
+          />
 
           {apiError && (
             <span className={s.errorMessage}>

@@ -20,7 +20,7 @@ export const authApi = createApi({
       query: (credentials) => ({
         url: "/auth/login",
         method: "POST",
-        body: { ...credentials, expiresInMins: 1 },
+        body: { ...credentials },
       }),
       transformResponse: (response) => {
         if (response.accessToken) {
@@ -41,7 +41,6 @@ export const authApi = createApi({
         method: "POST",
         body: {
           refreshToken: tokenStorage.refresh.get(),
-          expiresInMins: 1,
         },
       }),
       transformResponse: (response) => {

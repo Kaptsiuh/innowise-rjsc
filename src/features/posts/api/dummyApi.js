@@ -13,7 +13,15 @@ export const dummyApi = createApi({
     getPostById: builder.query({
       query: (id) => `posts/${id}`,
     }),
+    getPostComments: builder.query({
+      query: (id) => `posts/${id}/comments`,
+      transformResponse: (response) => response.comments || [],
+    }),
   }),
 });
 
-export const { useGetPostsQuery, useGetPostByIdQuery } = dummyApi;
+export const {
+  useGetPostsQuery,
+  useGetPostByIdQuery,
+  useGetPostCommentsQuery,
+} = dummyApi;

@@ -5,6 +5,7 @@ import { useForm } from "react-hook-form";
 import { useDispatch } from "react-redux";
 import { setIsLoggedInAC } from "../../../../app-slice.js";
 import { DEFAULT_USER_VALUES } from "../../../../common/constants/index.js";
+import { Button } from "../../../../common/components/Button/Button.jsx";
 
 export const Login = () => {
   const [login, { error: apiError }] = useLoginMutation();
@@ -80,9 +81,9 @@ export const Login = () => {
             </span>
           )}
 
-          <button type="submit" className={s.button}>
+          <Button type="submit" className={s.button}>
             Login
-          </button>
+          </Button>
         </div>
       </form>
     </div>

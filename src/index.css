@@ -24,7 +24,7 @@
   --button-text: #ffffff;
 }
 
-.dark-theme {
+[data-theme="dark"] {
   --white: #1a1a1a;
   --black: #e0e0e0;
 
@@ -35,6 +35,7 @@
   --background: #121212;
   --card: #1e1e1e;
   --shadow: #383837;
+  --tags: #3b3939;
 }
 
 body {

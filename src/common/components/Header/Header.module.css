@@ -34,3 +34,8 @@
 .logoutButton:hover {
   transform: scale(1.03);
 }
+
+.buttonsContainer {
+  display: flex;
+  gap: 1rem;
+}

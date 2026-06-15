@@ -6,6 +6,7 @@ import { useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
 import { Path } from "../../routing/index.js";
 import { tokenStorage } from "../../utils/index.js";
+import { ToggleThemeMode } from "../ToggleThemeMode/ToggleThemeMode.jsx";
 
 export const Header = () => {
   const isLoggedIn = useSelector(selectIsLoggedIn);
@@ -23,7 +24,8 @@ export const Header = () => {
         <Link to={Path.Posts} className={s.logo}>
           Posts
         </Link>
-        <div>
+        <div className={s.buttonsContainer}>
+          <ToggleThemeMode />
           {isLoggedIn && (
             <button className={s.logoutButton} onClick={logoutHandler}>
               Sign out

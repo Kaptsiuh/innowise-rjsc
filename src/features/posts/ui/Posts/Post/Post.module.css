@@ -28,6 +28,7 @@
 
 .tag {
   background-color: var(--tags);
+  color: var(--text);
   padding: 2px 8px;
   border-radius: 0.25rem;
   font-size: 0.8rem;

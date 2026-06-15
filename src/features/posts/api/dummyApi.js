@@ -10,7 +10,10 @@ export const dummyApi = createApi({
     getPosts: builder.query({
       query: (limit = 12) => `posts?limit=${limit}`,
     }),
+    getPostById: builder.query({
+      query: (id) => `posts/${id}`,
+    }),
   }),
 });
 
-export const { useGetPostsQuery } = dummyApi;
+export const { useGetPostsQuery, useGetPostByIdQuery } = dummyApi;

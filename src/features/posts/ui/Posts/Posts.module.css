@@ -19,3 +19,19 @@
   grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
   gap: 1rem;
 }
+
+.container {
+  background: var(--card);
+  border-radius: 0.5rem;
+  box-shadow: 0 2px 4px var(--shadow);
+  padding: 1rem;
+  border: 1px solid var(--border);
+  transition:
+    transform 0.2s,
+    box-shadow 0.2s;
+}
+
+.container:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 4px 12px var(--shadow);
+}

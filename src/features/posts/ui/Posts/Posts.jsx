@@ -2,6 +2,7 @@ import React from "react";
 import { useGetPostsQuery } from "../../api/dummyApi.js";
 import { Post } from "./Post/Post";
 import * as s from "./Posts.module.css";
+import { Link } from "react-router-dom";
 
 export const Posts = () => {
   const { data, isLoading, error } = useGetPostsQuery();
@@ -22,8 +23,10 @@ export const Posts = () => {
 
       <div className={s.grid}>
         {data.posts?.map((post) => (
-          <div key={post.id}>
-            <Post post={post} />
+          <div key={post.id} className={s.container}>
+            <Link to={`/posts/${post.id}`}>
+              <Post post={post} />
+            </Link>
           </div>
         ))}
       </div>

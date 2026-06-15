@@ -6,9 +6,11 @@ import { PageNotFound } from "../components/PageNotFound/PageNotFound.jsx";
 import { ProtectedRoute } from "../components/ProtectedRoute/ProtectedRoute.jsx";
 import { useSelector } from "react-redux";
 import { selectIsLoggedIn } from "../../app-slice.js";
+import { PostDetails } from "../../features/posts/ui/PostDetails/PostDetails.jsx";
 
 export const Path = {
   Posts: "/",
+  Post: "/posts/:id",
   Login: "/login",
   NotFound: "*",
 };
@@ -24,6 +26,7 @@ export const Routing = () => {
         }
       >
         <Route path={Path.Posts} element={<Posts />} />
+        <Route path={Path.Post} element={<PostDetails />} />
       </Route>
 
       <Route

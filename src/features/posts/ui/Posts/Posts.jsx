@@ -1,6 +1,6 @@
 import React from "react";
 import * as s from "./Posts.module.css";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import { useGetPostsQuery } from "../../api/dummyApi.js";
 import { Post } from "../index.js";
 import {
@@ -13,8 +13,11 @@ import { POSTS_LIMIT } from "@common/constants/constants.js";
 import { usePagination } from "@common/hooks/usePagination.js";
 
 export const Posts = () => {
+  const location = useLocation();
+  const initialPage = location.state?.page || 1;
+
   const { page, skip, handlePageChange, getTotalPages } = usePagination(
-    1,
+    initialPage,
     POSTS_LIMIT,
   );
 
@@ -50,7 +53,7 @@ export const Posts = () => {
       <div className={s.grid}>
         {data?.posts?.map((post) => (
           <div key={post.id} className={s.container}>
-            <Link to={`/posts/${post.id}`}>
+            <Link to={`/posts/${post.id}`} state={{ page }}>
               <Post post={post} />
             </Link>
           </div>

@@ -4,13 +4,24 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  color: var(--text);
 }
 
 .title {
-  font-size: 250px;
+  font-size: 15rem;
 }
 
 .subtitle {
-  font-size: 50px;
+  font-size: 3rem;
   text-transform: uppercase;
+}
+
+@media (max-width: 500px) {
+  .title {
+    font-size: 10rem;
+  }
+
+  .subtitle {
+    font-size: 2rem;
+  }
 }

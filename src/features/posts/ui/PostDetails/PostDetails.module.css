@@ -3,9 +3,13 @@
   margin: 0 auto;
   padding: 2rem;
   font-size: 1.3rem;
-
+  /* 
   h3 {
     font-size: 2rem;
     text-align: start;
-  }
+  } */
+}
+
+.errorWrapper {
+  margin: 5rem 0;
 }

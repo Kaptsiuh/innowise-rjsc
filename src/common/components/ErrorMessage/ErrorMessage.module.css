@@ -1,0 +1,16 @@
+.errorContainer {
+  padding: 1rem;
+  border-radius: 8px;
+  margin: 0 auto;
+  max-width: 400px;
+  border: 1px solid var(--red);
+}
+
+.errorContent {
+  text-align: center;
+}
+
+.errorMessage {
+  color: var(--red);
+  font-size: 0.95rem;
+}

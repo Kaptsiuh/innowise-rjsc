@@ -1,55 +1,20 @@
-.comment {
-  background-color: var(--card);
-  border: 1px solid var(--border);
-  border-radius: 0.5rem;
-  padding: 1rem;
-  margin: 0.5rem;
+.commentsContainer {
+  margin-top: 2rem;
 }
 
-.header {
-  display: flex;
-  align-items: center;
-  gap: 1rem;
-  margin-bottom: 0.5rem;
-
-  h3 {
-    font-size: 1.3rem;
-    font-weight: normal;
-  }
-}
-
-.avatar {
-  width: 2rem;
-  height: 2rem;
-  background-color: var(--green);
-  color: var(--white);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  border-radius: 50%;
-  font-weight: bold;
-  font-size: 1rem;
-}
-
-.userInfo {
-  display: flex;
-  flex-direction: column;
-}
-
-.userName {
-  color: var(--title);
-}
-
-.likes {
-  display: flex;
-  align-items: center;
+.commentsTitle {
+  font-size: 1.2rem;
   color: var(--text);
-  gap: 0.3rem;
-  font-size: 0.8rem;
+  margin-bottom: 1rem;
 }
 
-.body {
-  color: var(--title);
+.noComments {
+  text-align: center;
+  padding: 2rem;
+  font-size: 1.2rem;
+  color: var(--text);
+}
 
-  font-size: 0.9rem;
+.errorWrapper {
+  margin: 5rem 0;
 }

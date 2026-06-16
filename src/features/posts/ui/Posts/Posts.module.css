@@ -35,3 +35,7 @@
   transform: translateY(-4px);
   box-shadow: 0 4px 12px var(--shadow);
 }
+
+.errorWrapper {
+  margin: 5rem 0;
+}

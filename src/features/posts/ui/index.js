@@ -1,3 +1,4 @@
+export { Comment } from "./PostDetails/Comments/Comment/Comment.jsx";
 export { Comments } from "./PostDetails/Comments/Comments.jsx";
 export { PostDetails } from "./PostDetails/PostDetails.jsx";
 export { Post } from "./Posts/Post/Post.jsx";

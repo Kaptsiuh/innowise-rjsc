@@ -1,3 +1,4 @@
+export { ErrorMessage } from "./ErrorMessage/ErrorMessage.jsx";
 export { LinearProgress } from "./LinearProgress/LinearProgress.jsx";
 export { ProtectedRoute } from "./ProtectedRoute/ProtectedRoute.jsx";
 export { PageNotFound } from "./PageNotFound/PageNotFound.jsx";

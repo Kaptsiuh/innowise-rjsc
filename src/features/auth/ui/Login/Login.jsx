@@ -5,7 +5,13 @@ import { useDispatch } from "react-redux";
 import { useLoginMutation } from "../../api/authApi.js";
 import { setIsLoggedInAC } from "@app/app-slice.js";
 import { DEFAULT_USER_VALUES } from "@common/constants/index.js";
-import { Input, Button, LinearProgress } from "@common/components/index.js";
+import {
+  Input,
+  Button,
+  LinearProgress,
+  ErrorMessage,
+} from "@common/components/index.js";
+import { getErrorMessage } from "@common/utils/errorHandler.js";
 
 export const Login = () => {
   const [login, { error: apiError, isLoading }] = useLoginMutation();
@@ -61,9 +67,12 @@ export const Login = () => {
           />
 
           {apiError && (
-            <span className={s.errorMessage}>
-              {apiError.data?.message || "Invalid username or password"}
-            </span>
+            <ErrorMessage
+              error={apiError}
+              message={
+                getErrorMessage(apiError) || "Invalid username or password"
+              }
+            />
           )}
 
           <Button type="submit" className={s.button} disabled={isLoading}>

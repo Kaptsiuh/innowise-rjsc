@@ -9,9 +9,9 @@
 }
 
 .title {
-  font-size: 1.3rem;
+  font-size: 2rem;
   color: var(--title);
-  text-align: center;
+  text-align: start;
   margin-bottom: 0.5rem;
 }
 

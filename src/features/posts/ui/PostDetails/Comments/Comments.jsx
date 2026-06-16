@@ -1,19 +1,34 @@
 import React from "react";
 import * as s from "./Comments.module.css";
+import { useGetPostCommentsQuery } from "../../../api/dummyApi.js";
+import { Comment } from "../../index.js";
+import { ErrorMessage, LinearProgress } from "@common/components/index.js";
 
-export const Comments = ({ comment }) => {
-  if (!comment) return null;
+export const Comments = ({ id }) => {
+  const { data: comments, isLoading, error } = useGetPostCommentsQuery(id);
+
+  if (isLoading) {
+    return <LinearProgress />;
+  }
+
+  if (error) {
+    return (
+      <div className={s.errorWrapper}>
+        <ErrorMessage error={error} message="Failed to load comments" />
+      </div>
+    );
+  }
+
+  if (!comments || comments.length === 0) {
+    return <div className={s.noComments}>No comments yet</div>;
+  }
 
   return (
-    <div className={s.comment}>
-      <div className={s.header}>
-        <div className={s.avatar}>{comment.user.username[0].toUpperCase()}</div>
-        <div className={s.userInfo}>
-          <h3 className={s.userName}>{comment.user.fullName}</h3>
-        </div>
-        <span className={s.likes}>likes: {comment.likes || 0}</span>
-      </div>
-      <p className={s.body}>{comment.body}</p>
+    <div className={s.commentsContainer}>
+      <h2 className={s.commentsTitle}>Comments ({comments.length})</h2>
+      {comments.map((comment) => (
+        <Comment key={comment.id} comment={comment} />
+      ))}
     </div>
   );
 };

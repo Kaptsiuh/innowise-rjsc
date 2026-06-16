@@ -6,6 +6,7 @@ import {
   useGetPostCommentsQuery,
 } from "../../api/dummyApi";
 import { Post, Comments } from "../index.js";
+import { LinearProgress } from "@common/components/index.js";
 
 export const PostDetails = () => {
   const { id } = useParams();
@@ -20,8 +21,8 @@ export const PostDetails = () => {
     error: commentsError,
   } = useGetPostCommentsQuery(id);
 
-  if (isPostLoading || isLoadingComments) {
-    return <div>Loading post...</div>;
+  if (isPostLoading) {
+    return <LinearProgress />;
   }
 
   if (postError) {
@@ -40,6 +41,7 @@ export const PostDetails = () => {
 
   return (
     <div className={s.container}>
+      {isLoadingComments && <LinearProgress />}
       <Post post={post} />
       {comments?.map((comment) => {
         return <Comments key={comment.id} comment={comment} />;

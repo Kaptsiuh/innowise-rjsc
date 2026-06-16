@@ -3,12 +3,13 @@ import * as s from "./Posts.module.css";
 import { Link } from "react-router-dom";
 import { useGetPostsQuery } from "../../api/dummyApi.js";
 import { Post } from "../index.js";
+import { LinearProgress } from "@common/components/index.js";
 
 export const Posts = () => {
   const { data, isLoading, error } = useGetPostsQuery();
 
   if (isLoading) {
-    return <div>Loading...</div>;
+    return <LinearProgress />;
   }
 
   if (error) {

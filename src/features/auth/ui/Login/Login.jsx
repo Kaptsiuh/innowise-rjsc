@@ -5,7 +5,7 @@ import { useDispatch } from "react-redux";
 import { useLoginMutation } from "../../api/authApi.js";
 import { setIsLoggedInAC } from "@app/app-slice.js";
 import { DEFAULT_USER_VALUES } from "@common/constants/index.js";
-import { Input, Button } from "@common/components/index.js";
+import { Input, Button, LinearProgress } from "@common/components/index.js";
 
 export const Login = () => {
   const [login, { error: apiError, isLoading }] = useLoginMutation();
@@ -36,6 +36,8 @@ export const Login = () => {
 
   return (
     <div className={s.container}>
+      {isLoading && <LinearProgress />}
+
       <form className={s.form} onSubmit={handleSubmit(onSubmit)}>
         <p className={s.title}>Sign in</p>
         <div className={s.field}>

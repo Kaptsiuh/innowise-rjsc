@@ -8,7 +8,8 @@ export const dummyApi = createApi({
   }),
   endpoints: (builder) => ({
     getPosts: builder.query({
-      query: (limit = 12) => `posts?limit=${limit}`,
+      query: ({ limit = 12, skip = 0 } = {}) =>
+        `posts?limit=${limit}&skip=${skip}`,
     }),
     getPostById: builder.query({
       query: (id) => `posts/${id}`,

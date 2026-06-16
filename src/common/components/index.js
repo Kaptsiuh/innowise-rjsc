@@ -1,3 +1,4 @@
+export { Pagination } from "./Pagination/Pagination.jsx";
 export { ErrorMessage } from "./ErrorMessage/ErrorMessage.jsx";
 export { LinearProgress } from "./LinearProgress/LinearProgress.jsx";
 export { ProtectedRoute } from "./ProtectedRoute/ProtectedRoute.jsx";

@@ -49,3 +49,10 @@
   margin: 5rem;
   color: var(--title);
 }
+
+@media (max-width: 500px) {
+  .grid {
+    display: flex;
+    flex-direction: column;
+  }
+}

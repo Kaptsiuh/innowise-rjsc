@@ -29,7 +29,7 @@ export const useAuth = () => {
     };
 
     init();
-  }, [isLoading, user, error, dispatch, refreshToken, refetch]);
+  }, [isLoading, user, error]);
 
   return { isInitialized };
 };

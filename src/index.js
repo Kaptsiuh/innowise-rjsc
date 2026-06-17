@@ -5,14 +5,17 @@ import { Provider } from "react-redux";
 import { App } from "@app/App.jsx";
 import { store } from "@app/store.js";
 import "@common/styles/index.css";
+import { HelmetProvider } from "react-helmet-async";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <React.StrictMode>
-    <BrowserRouter>
-      <Provider store={store}>
-        <App />
-      </Provider>
-    </BrowserRouter>
+    <HelmetProvider>
+      <BrowserRouter>
+        <Provider store={store}>
+          <App />
+        </Provider>
+      </BrowserRouter>
+    </HelmetProvider>
   </React.StrictMode>,
 );

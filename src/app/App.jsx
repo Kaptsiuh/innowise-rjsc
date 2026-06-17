@@ -12,9 +12,11 @@ export const App = () => {
   }
 
   return (
-    <div>
+    <>
       <Header />
-      <Routing />
-    </div>
+      <main role="main">
+        <Routing />
+      </main>
+    </>
   );
 };

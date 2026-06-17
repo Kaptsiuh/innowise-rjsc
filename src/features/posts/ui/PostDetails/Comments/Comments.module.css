@@ -15,6 +15,14 @@
   color: var(--text);
 }
 
+.comment {
+  background-color: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 0.5rem;
+  padding: 1rem;
+  margin: 0.5rem;
+}
+
 .errorWrapper {
   margin: 5rem 0;
 }

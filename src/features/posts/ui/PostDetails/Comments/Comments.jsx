@@ -26,9 +26,15 @@ export const Comments = ({ id }) => {
   return (
     <div className={s.commentsContainer}>
       <h2 className={s.commentsTitle}>Comments ({comments.length})</h2>
-      {comments.map((comment) => (
-        <Comment key={comment.id} comment={comment} />
-      ))}
+      <ul>
+        {comments.map((comment) => {
+          return (
+            <li className={s.comment} key={comment.id}>
+              <Comment comment={comment} />
+            </li>
+          );
+        })}
+      </ul>
     </div>
   );
 };

@@ -20,8 +20,8 @@ export const Header = () => {
   return (
     <header className={s.header}>
       <div className={s.container}>
-        <Link to={Path.Posts} className={s.logo}>
-          Posts
+        <Link to={Path.Posts}>
+          <h1 className={s.logo}>Logo</h1>
         </Link>
         <div className={s.buttonsContainer}>
           <ToggleThemeMode />

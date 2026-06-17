@@ -1,8 +1,8 @@
 import React from "react";
 import * as s from "./Posts.module.css";
-import { Link, useLocation } from "react-router-dom";
+import { useLocation } from "react-router-dom";
 import { useGetPostsQuery } from "../../api/dummyApi.js";
-import { Post } from "../index.js";
+import { PostsList } from "@features/posts/ui/index.js";
 import {
   LinearProgress,
   ErrorMessage,
@@ -11,6 +11,7 @@ import {
 import { getErrorMessage } from "@common/utils/errorHandler.js";
 import { POSTS_LIMIT } from "@common/constants/constants.js";
 import { usePagination } from "@common/hooks/usePagination.js";
+import { Helmet } from "react-helmet-async";
 
 export const Posts = () => {
   const location = useLocation();
@@ -45,26 +46,20 @@ export const Posts = () => {
   }
 
   return (
-    <div className={s.postsContainer}>
-      <div className={s.header}>
+    <>
+      <Helmet>
+        <title>Posts</title>
+        <meta name="description" content="All posts on our blog" />
+      </Helmet>
+      <div className={s.postsContainer}>
         <h2 className={s.title}>Recent Posts</h2>
+        <PostsList posts={data.posts} page={page} />
+        <Pagination
+          currentPage={page}
+          totalPages={totalPages}
+          onPageChange={handlePageChange}
+        />
       </div>
-
-      <div className={s.grid}>
-        {data?.posts?.map((post) => (
-          <div key={post.id} className={s.container}>
-            <Link to={`/posts/${post.id}`} state={{ page }}>
-              <Post post={post} />
-            </Link>
-          </div>
-        ))}
-      </div>
-
-      <Pagination
-        currentPage={page}
-        totalPages={totalPages}
-        onPageChange={handlePageChange}
-      />
-    </div>
+    </>
   );
 };

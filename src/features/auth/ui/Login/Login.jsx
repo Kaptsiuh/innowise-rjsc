@@ -12,6 +12,7 @@ import {
   ErrorMessage,
 } from "@common/components/index.js";
 import { getErrorMessage } from "@common/utils/errorHandler.js";
+import { Helmet } from "react-helmet-async";
 
 export const Login = () => {
   const [login, { error: apiError, isLoading }] = useLoginMutation();
@@ -41,45 +42,51 @@ export const Login = () => {
   };
 
   return (
-    <div className={s.container}>
-      {isLoading && <LinearProgress />}
+    <>
+      <Helmet>
+        <title>Login</title>
+        <meta name="description" content="Sign in to access" />
+      </Helmet>
+      <div className={s.container}>
+        {isLoading && <LinearProgress />}
 
-      <form className={s.form} onSubmit={handleSubmit(onSubmit)}>
-        <p className={s.title}>Sign in</p>
-        <div className={s.field}>
-          <Input
-            id={"username"}
-            label={"Username"}
-            register={register}
-            name={"username"}
-            error={errors.username}
-            placeholder={"Enter username"}
-            disabled={isLoading}
-          />
-          <Input
-            id={"password"}
-            label={"Password"}
-            register={register}
-            name={"password"}
-            error={errors.password}
-            placeholder={"Password"}
-            disabled={isLoading}
-          />
-
-          {apiError && (
-            <ErrorMessage
-              error={apiError}
-              message={
-                getErrorMessage(apiError) || "Invalid username or password"
-              }
+        <form className={s.form} onSubmit={handleSubmit(onSubmit)}>
+          <p className={s.title}>Sign in</p>
+          <div className={s.field}>
+            <Input
+              id={"username"}
+              label={"Username"}
+              register={register}
+              name={"username"}
+              error={errors.username}
+              placeholder={"Enter username"}
+              disabled={isLoading}
             />
-          )}
+            <Input
+              id={"password"}
+              label={"Password"}
+              register={register}
+              name={"password"}
+              error={errors.password}
+              placeholder={"Password"}
+              disabled={isLoading}
+            />
 
-          <Button type="submit" className={s.button} disabled={isLoading}>
-            Login
-          </Button>
-        </div>
-      </form>
-    </div>
+            {apiError && (
+              <ErrorMessage
+                error={apiError}
+                message={
+                  getErrorMessage(apiError) || "Invalid username or password"
+                }
+              />
+            )}
+
+            <Button type="submit" className={s.button} disabled={isLoading}>
+              Login
+            </Button>
+          </div>
+        </form>
+      </div>
+    </>
   );
 };

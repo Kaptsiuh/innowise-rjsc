@@ -2,6 +2,7 @@ import { configureStore } from "@reduxjs/toolkit";
 import { dummyApi } from "@features/posts/api/dummyApi.js";
 import { authApi } from "@features/auth/api/authApi.js";
 import { appSlice } from "./app-slice.js";
+import { listenerMiddleware } from "./listeners.js";
 
 export const store = configureStore({
   reducer: {
@@ -10,5 +11,7 @@ export const store = configureStore({
     [authApi.reducerPath]: authApi.reducer,
   },
   middleware: (getDefaultMiddleware) =>
-    getDefaultMiddleware().concat(dummyApi.middleware, authApi.middleware),
+    getDefaultMiddleware()
+      .concat(dummyApi.middleware, authApi.middleware)
+      .prepend(listenerMiddleware.middleware),
 });

@@ -1,9 +1,7 @@
 import React from "react";
 import * as s from "./Login.module.css";
 import { useForm } from "react-hook-form";
-import { useDispatch } from "react-redux";
 import { useLoginMutation } from "../../api/authApi.js";
-import { setIsLoggedInAC } from "@app/app-slice.js";
 import { DEFAULT_USER_VALUES } from "@common/constants/index.js";
 import {
   Input,
@@ -17,8 +15,6 @@ import { Helmet } from "react-helmet-async";
 export const Login = () => {
   const [login, { error: apiError, isLoading }] = useLoginMutation();
 
-  const dispatch = useDispatch();
-
   const {
     register,
     handleSubmit,
@@ -30,12 +26,8 @@ export const Login = () => {
 
   const onSubmit = async (data) => {
     try {
-      const res = await login(data).unwrap();
-
-      if (res) {
-        dispatch(setIsLoggedInAC({ isLoggedIn: true }));
-        reset();
-      }
+      await login(data).unwrap();
+      reset();
     } catch (error) {
       console.log(error);
     }

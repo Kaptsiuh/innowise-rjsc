@@ -2,10 +2,11 @@ import React from "react";
 import * as s from "./Header.module.css";
 import { useSelector, useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
-import { selectIsLoggedIn, setIsLoggedInAC } from "@app/app-slice.js";
 import { Path } from "@common/routing/index.js";
 import { tokenStorage } from "@common/utils/index.js";
 import { ToggleThemeMode, Button } from "../index.js";
+import { selectIsLoggedIn } from "@features/auth/api/authSelectors.js";
+import { authApi } from "@features/auth/api/authApi.js";
 
 export const Header = () => {
   const isLoggedIn = useSelector(selectIsLoggedIn);
@@ -14,7 +15,7 @@ export const Header = () => {
 
   const logoutHandler = () => {
     tokenStorage.clear();
-    dispatch(setIsLoggedInAC({ isLoggedIn: false }));
+    dispatch(authApi.util.resetApiState());
   };
 
   return (

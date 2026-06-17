@@ -1,20 +1,11 @@
-import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
-import { BASE_URL } from "@common/constants/index.js";
+import { createApi } from "@reduxjs/toolkit/query/react";
 import { tokenStorage } from "@common/utils/index.js";
+import { baseQueryWithReauth } from "@common/api/baseQuery";
 
 export const authApi = createApi({
   reducerPath: "authApi",
-  baseQuery: fetchBaseQuery({
-    baseUrl: BASE_URL,
-    credentials: "include",
-    prepareHeaders: (headers) => {
-      const token = tokenStorage.access.get();
-      if (token) {
-        headers.set("Authorization", `Bearer ${token}`);
-      }
-      return headers;
-    },
-  }),
+  baseQuery: baseQueryWithReauth,
+  tagTypes: ["User"],
   endpoints: (builder) => ({
     login: builder.mutation({
       query: (credentials) => ({
@@ -31,29 +22,13 @@ export const authApi = createApi({
         }
         return response;
       },
+      invalidatesTags: ["User"],
     }),
     me: builder.query({
       query: () => "/auth/me",
-    }),
-    refresh: builder.mutation({
-      query: () => ({
-        url: "/auth/refresh",
-        method: "POST",
-        body: {
-          refreshToken: tokenStorage.refresh.get(),
-        },
-      }),
-      transformResponse: (response) => {
-        if (response.accessToken) {
-          tokenStorage.access.set(response.accessToken);
-        }
-        if (response.refreshToken) {
-          tokenStorage.refresh.set(response.refreshToken);
-        }
-        return response;
-      },
+      providesTags: ["User"],
     }),
   }),
 });
 
-export const { useLoginMutation, useMeQuery, useRefreshMutation } = authApi;
+export const { useLoginMutation, useMeQuery } = authApi;

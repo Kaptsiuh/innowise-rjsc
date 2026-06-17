@@ -1,9 +1,12 @@
 import React, { Suspense } from "react";
 import { Route, Routes } from "react-router-dom";
 import { useSelector } from "react-redux";
-import { PageNotFound, ProtectedRoute } from "@common/components/index.js";
-import { selectIsLoggedIn } from "@app/app-slice.js";
-import { LinearProgress } from "../components/index.js";
+import {
+  PageNotFound,
+  ProtectedRoute,
+  LinearProgress,
+} from "@common/components/index.js";
+import { selectIsLoggedIn } from "@features/auth/api/authSelectors.js";
 
 const Posts = React.lazy(() =>
   import("@features/posts/ui/index.js").then((module) => ({

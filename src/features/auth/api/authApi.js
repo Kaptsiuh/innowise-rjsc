@@ -23,6 +23,14 @@ export const authApi = createApi({
         return response;
       },
       invalidatesTags: ["User"],
+      async onQueryStarted(arg, { dispatch, queryFulfilled }) {
+        try {
+          await queryFulfilled;
+          dispatch(
+            authApi.endpoints.me.initiate(undefined, { forceRefetch: true }),
+          );
+        } catch {}
+      },
     }),
     me: builder.query({
       query: () => "/auth/me",

@@ -11,10 +11,6 @@
   text-align: center;
 }
 
-.errorWrapper {
-  margin: 5rem 0;
-}
-
 .totalPosts {
   color: var(--text);
 }

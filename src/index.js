@@ -7,11 +7,13 @@ import { store } from "@app/store.js";
 import "@common/styles/index.css";
 import { HelmetProvider } from "react-helmet-async";
 
+const basename = process.env.NODE_ENV === "production" ? "/innowise-rjsc" : "/";
+
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <React.StrictMode>
     <HelmetProvider>
-      <BrowserRouter>
+      <BrowserRouter basename={basename}>
         <Provider store={store}>
           <App />
         </Provider>

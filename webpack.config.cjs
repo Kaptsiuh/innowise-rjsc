@@ -19,7 +19,7 @@ module.exports = (env, argv) => {
         ? "[name].[contenthash].chunk.js"
         : "[name].chunk.js",
       clean: true,
-      publicPath: "/",
+      publicPath: isProduction ? "/innowise-rjsc/" : "/",
     },
 
     devServer: {
@@ -78,29 +78,30 @@ module.exports = (env, argv) => {
       new HtmlWebpackPlugin({
         template: "./index.html",
         filename: "index.html",
-        minify: isProduction
-          ? [
-              new CompressionPlugin({
-                test: /\.(js|css|html|svg)$/,
-                algorithm: "gzip",
-                threshold: 10240,
-                minRatio: 0.8,
-              }),
-              new CompressionPlugin({
-                test: /\.(js|css|html|svg)$/,
-                algorithm: "brotliCompress",
-                filename: "[path][base].br",
-                threshold: 10240,
-                minRatio: 0.8,
-              }),
-            ]
-          : [],
+        minify: isProduction,
       }),
       new MiniCssExtractPlugin({
         filename: isProduction ? "[name].[contenthash].css" : "[name].css",
         chunkFilename: isProduction ? "[id].[contenthash].css" : "[id].css",
         ignoreOrder: true,
       }),
+      ...(isProduction
+        ? [
+            new CompressionPlugin({
+              test: /\.(js|css|html|svg)$/,
+              algorithm: "gzip",
+              threshold: 10240,
+              minRatio: 0.8,
+            }),
+            new CompressionPlugin({
+              test: /\.(js|css|html|svg)$/,
+              algorithm: "brotliCompress",
+              filename: "[path][base].br",
+              threshold: 10240,
+              minRatio: 0.8,
+            }),
+          ]
+        : []),
     ],
 
     optimization: {

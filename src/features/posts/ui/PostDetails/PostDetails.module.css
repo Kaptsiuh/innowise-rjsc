@@ -4,10 +4,6 @@
   padding: 2rem;
 }
 
-.errorWrapper {
-  margin: 5rem 0;
-}
-
 .returnButton {
   background: var(--green);
   color: var(--button-text);

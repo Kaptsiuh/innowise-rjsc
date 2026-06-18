@@ -57,6 +57,7 @@ export const Login = () => {
             <Input
               id={"password"}
               label={"Password"}
+              type={"password"}
               register={register}
               name={"password"}
               error={errors.password}

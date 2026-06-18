@@ -1,3 +1,3 @@
 export { tokenStorage } from "./tokenStorage.js";
 export { getInitialTheme } from "./theme.js";
-export * from "./errorHandler.js";
+export { getErrorMessage } from "./errorHandler.js";

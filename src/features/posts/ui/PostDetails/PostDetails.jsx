@@ -3,10 +3,9 @@ import * as s from "./PostDetails.module.css";
 import { useLocation, useNavigate, useParams } from "react-router-dom";
 import { useGetPostByIdQuery } from "../../api/dummyApi";
 import { Post, Comments } from "../index.js";
-import { LinearProgress, ErrorMessage } from "@common/components/index.js";
-import { getErrorMessage } from "@common/utils/errorHandler.js";
 import { Button } from "@common/components/index.js";
 import { Helmet } from "react-helmet-async";
+import { QueryLoader } from "@common/components/QueryLoader/QueryLoader.jsx";
 
 export const PostDetails = () => {
   const navigate = useNavigate();
@@ -16,18 +15,6 @@ export const PostDetails = () => {
 
   const page = location.state?.page || 1;
   const navigateState = useMemo(() => ({ page }), [page]);
-
-  if (isLoading) {
-    return <LinearProgress />;
-  }
-
-  if (error) {
-    return (
-      <div className={s.errorWrapper}>
-        <ErrorMessage error={error} message={getErrorMessage(error)} />
-      </div>
-    );
-  }
 
   return (
     <>
@@ -45,8 +32,10 @@ export const PostDetails = () => {
         >
           Back to posts
         </Button>
-        <Post post={post} />
-        <Comments id={id} />
+        <QueryLoader isLoading={isLoading} error={error}>
+          <Post post={post} />
+          <Comments id={id} />
+        </QueryLoader>
       </div>
     </>
   );
